@@ -104,6 +104,26 @@ export interface IMonthViewEventDetailTemplateContext {
     noEventsLabel: string
 }
 
+export interface IWeekViewAllDayEventSectionTemplateContext {
+    day: IWeekViewDateRow,
+    eventTemplate: TemplateRef<IDisplayAllDayEvent>
+}
+
+export interface IWeekViewNormalEventSectionTemplateContext {
+    tm: IWeekViewRow,
+    eventTemplate: TemplateRef<IDisplayEvent>
+}
+
+export interface IDayViewAllDayEventSectionTemplateContext {
+    alldayEvents: IDisplayAllDayEvent[],
+    eventTemplate: TemplateRef<IDisplayAllDayEvent>
+}
+
+export interface IDayViewNormalEventSectionTemplateContext {
+    tm: IDayViewRow,
+    eventTemplate: TemplateRef<IDisplayEvent>
+}
+
 export interface IDateFormatter {
     formatMonthViewDay?: { (date:Date): string; };
     formatMonthViewDayHeader?: { (date:Date): string; };
@@ -172,6 +192,10 @@ export class CalendarComponent implements OnInit {
     @Input() weekviewNormalEventTemplate:TemplateRef<IDisplayEvent>;
     @Input() dayviewAllDayEventTemplate:TemplateRef<IDisplayAllDayEvent>;
     @Input() dayviewNormalEventTemplate:TemplateRef<IDisplayEvent>;
+    @Input() weekviewAllDayEventSectionTemplate:TemplateRef<IWeekViewAllDayEventSectionTemplateContext>;
+    @Input() weekviewNormalEventSectionTemplate:TemplateRef<IWeekViewNormalEventSectionTemplateContext>;
+    @Input() dayviewAllDayEventSectionTemplate:TemplateRef<IDayViewAllDayEventSectionTemplateContext>;
+    @Input() dayviewNormalEventSectionTemplate:TemplateRef<IDayViewNormalEventSectionTemplateContext>;
     @Input() dateFormatter:IDateFormatter;
     @Input() dir:string = "";
     @Input() scrollToHour:number = 0;

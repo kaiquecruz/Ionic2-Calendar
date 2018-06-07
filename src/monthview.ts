@@ -233,36 +233,37 @@ export class MonthViewComponent implements ICalendarComponent, OnInit, OnChanges
     }
 
     getHighlightClass(date:IMonthViewRow):string {
-        var className = '';
+        let className = '';
+
         if (date.hasEvent) {
             if (date.secondary) {
                 className = 'monthview-secondary-with-event';
-            }
-            if (date.secondary == false && date.events.length > 1) {
-                className = 'monthview-primary-with-many-events';
-            }
-            else {
+            } else {
                 className = 'monthview-primary-with-event';
             }
         }
+
         if (date.selected) {
             if (className) {
                 className += ' ';
             }
             className += 'monthview-selected';
         }
+
         if (date.current) {
             if (className) {
                 className += ' ';
             }
             className += 'monthview-current';
         }
+
         if (date.secondary) {
             if (className) {
                 className += ' ';
             }
             className += 'text-muted';
         }
+
         if (date.disabled) {
             if (className) {
                 className += ' ';
