@@ -1,6 +1,6 @@
 {
-    "name": "ionic2-calendar",
-    "version": "0.2.18",
+    "name": "kaiquecruz-ionic2-calendar",
+    "version": "0.2.20",
     "description": "Ionic2 calendar component",
     "keywords": [
         "Ionic2",
@@ -12,7 +12,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/twinssbc/Ionic2-Calendar.git"
+        "url": "git+https://github.com/kaiquecruz/Ionic2-Calendar.git"
     },
     "scripts": {
         "build": "rm -rf dist && tsc",

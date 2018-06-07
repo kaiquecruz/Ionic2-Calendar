@@ -18,7 +18,7 @@ version 0.4.x depends on Ionic 3.9.2 version onwards.
 
 # Usage
 
-Install: `npm install ionic2-calendar --save`
+Install: `npm install kaiquecruz-ionic2-calendar --save`
 
 Import the ionic2-calendar module:
 
