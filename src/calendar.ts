@@ -202,10 +202,11 @@ export enum Step {
     .container ul li {
         position: relative;
         margin-left: 30px;
-        background-color: #D42424;
+        background-color: #FF619C;
         padding: 14px;
         margin-left: 65px;
         border: none!important;
+        border-radius: 10px!important;
     }
     .container ul li:not(:first-child) {
         margin-top: 60px;
@@ -225,7 +226,7 @@ export enum Step {
         border-radius: 50%;
         border: 2px solid #000;
         position: absolute;
-        background: #D42424;
+        background: #FF619C;
         left: -5px;
         top: 0;
     }
@@ -261,6 +262,9 @@ export enum Step {
     }
     .container span.number span:last-child {
         top: 100%;     
+    }
+    .container ion-item .item-inner{
+        border: none!important;
     }
     .item.item-block {
         background: transparent!important;
