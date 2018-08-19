@@ -82,9 +82,9 @@ function View_MonthViewComponent_4(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -211,9 +211,9 @@ function View_MonthViewComponent_9(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -370,9 +370,9 @@ function View_MonthViewComponent_14(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -499,9 +499,9 @@ function View_MonthViewComponent_19(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -658,9 +658,9 @@ function View_MonthViewComponent_24(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -787,9 +787,9 @@ function View_MonthViewComponent_29(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -1053,9 +1053,9 @@ export function View_MonthViewComponent_0(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }

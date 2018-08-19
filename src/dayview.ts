@@ -22,7 +22,7 @@ import { IDisplayAllDayEvent, IDayViewAllDayEventSectionTemplateContext, IDayVie
                                     [ngStyle]="{height: 25*views[0].allDayEvents.length+'px'}"
                                     *ngIf="0===currentViewIndex">
                                     <ng-template [ngTemplateOutlet]="dayviewAllDayEventSectionTemplate"
-                                                 [ngOutletContext]="{allDayEvents:views[0].allDayEvents,eventTemplate:dayviewAllDayEventTemplate}">
+                                                 [ngTemplateOutletContext]="{allDayEvents:views[0].allDayEvents,eventTemplate:dayviewAllDayEventTemplate}">
                                     </ng-template>
                                 </td>
                                 <td class="calendar-cell" *ngIf="0!==currentViewIndex">
@@ -41,7 +41,7 @@ import { IDisplayAllDayEvent, IDayViewAllDayEventSectionTemplateContext, IDayVie
                             </td>
                             <td class="calendar-cell" tappable (click)="select(tm.time, tm.events)">
                                 <ng-template [ngTemplateOutlet]="dayviewNormalEventSectionTemplate"
-                                             [ngOutletContext]="{tm:tm, eventTemplate:dayviewNormalEventTemplate}">
+                                             [ngTemplateOutletContext]="{tm:tm, eventTemplate:dayviewNormalEventTemplate}">
                                 </ng-template>
                             </td>
                         </tr>
@@ -73,7 +73,7 @@ import { IDisplayAllDayEvent, IDayViewAllDayEventSectionTemplateContext, IDayVie
                                     [ngStyle]="{height: 25*views[1].allDayEvents.length+'px'}"
                                     *ngIf="1===currentViewIndex">
                                     <ng-template [ngTemplateOutlet]="dayviewAllDayEventSectionTemplate"
-                                                 [ngOutletContext]="{allDayEvents:views[1].allDayEvents,eventTemplate:dayviewAllDayEventTemplate}">
+                                                 [ngTemplateOutletContext]="{allDayEvents:views[1].allDayEvents,eventTemplate:dayviewAllDayEventTemplate}">
                                     </ng-template>
                                 </td>
                                 <td class="calendar-cell" *ngIf="1!==currentViewIndex">
@@ -92,7 +92,7 @@ import { IDisplayAllDayEvent, IDayViewAllDayEventSectionTemplateContext, IDayVie
                             </td>
                             <td class="calendar-cell" tappable (click)="select(tm.time, tm.events)">
                                 <ng-template [ngTemplateOutlet]="dayviewNormalEventSectionTemplate"
-                                             [ngOutletContext]="{tm:tm, eventTemplate:dayviewNormalEventTemplate}">
+                                             [ngTemplateOutletContext]="{tm:tm, eventTemplate:dayviewNormalEventTemplate}">
                                 </ng-template>
                             </td>
                         </tr>
@@ -124,7 +124,7 @@ import { IDisplayAllDayEvent, IDayViewAllDayEventSectionTemplateContext, IDayVie
                                     [ngStyle]="{height: 25*views[2].allDayEvents.length+'px'}"
                                     *ngIf="2===currentViewIndex">
                                     <ng-template [ngTemplateOutlet]="dayviewAllDayEventSectionTemplate"
-                                                 [ngOutletContext]="{allDayEvents:views[2].allDayEvents,eventTemplate:dayviewAllDayEventTemplate}">
+                                                 [ngTemplateOutletContext]="{allDayEvents:views[2].allDayEvents,eventTemplate:dayviewAllDayEventTemplate}">
                                     </ng-template>
                                 </td>
                                 <td class="calendar-cell" *ngIf="2!==currentViewIndex">
@@ -143,7 +143,7 @@ import { IDisplayAllDayEvent, IDayViewAllDayEventSectionTemplateContext, IDayVie
                             </td>
                             <td class="calendar-cell" tappable (click)="select(tm.time, tm.events)">
                                 <ng-template [ngTemplateOutlet]="dayviewNormalEventSectionTemplate"
-                                             [ngOutletContext]="{tm:tm, eventTemplate:dayviewNormalEventTemplate}">
+                                             [ngTemplateOutletContext]="{tm:tm, eventTemplate:dayviewNormalEventTemplate}">
                                 </ng-template>
                             </td>
                         </tr>

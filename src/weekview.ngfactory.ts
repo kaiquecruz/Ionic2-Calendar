@@ -64,9 +64,9 @@ function View_WeekViewComponent_3(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -123,9 +123,9 @@ function View_WeekViewComponent_6(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -595,9 +595,9 @@ function View_WeekViewComponent_14(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -642,9 +642,9 @@ function View_WeekViewComponent_18(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -1161,9 +1161,9 @@ function View_WeekViewComponent_26(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }
@@ -1208,9 +1208,9 @@ function View_WeekViewComponent_30(l:any):import0.ɵViewDefinition {
         'ngTemplateOutlet'
       ]
       ,
-      ngOutletContext: [
+      ngTemplateOutletContext: [
         1,
-        'ngOutletContext'
+        'ngTemplateOutletContext'
       ]
 
     }

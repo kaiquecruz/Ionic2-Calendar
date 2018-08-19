@@ -147,8 +147,144 @@ export enum Step {
 
 @Component({
     selector: 'calendar',
-    template: `<ng-template #monthviewDefaultDisplayEventTemplate let-view=\"view\" let-row=\"row\" let-col=\"col\">             {{view.dates[row*7+col].label}}         </ng-template>         <ng-template #monthviewDefaultEventDetailTemplate let-showEventDetail=\"showEventDetail\" let-selectedDate=\"selectedDate\" let-noEventsLabel=\"noEventsLabel\">             <ion-list class=\"event-detail-container\" has-bouncing=\"false\" *ngIf=\"showEventDetail\" overflow-scroll=\"false\">                 <ion-item *ngFor=\"let event of selectedDate?.events\" tappable  (click)=\"eventSelected(event)\">                         <span *ngIf=\"!event.allDay\" class=\"monthview-eventdetail-timecolumn\">{{event.startTime|date: 'HH:mm'}}                         </span>                     <span *ngIf=\"event.allDay\" class=\"monthview-eventdetail-timecolumn\">{{allDayLabel}}</span>           <span class=\"event-detail\">{{event.title}}</span>            <span *ngIf=\"event.convidado\" style=\"float:right;margin: 0px 5px;\"><ion-icon name=\"ios-mail-open\"></ion-icon></span>   <ion-icon *ngIf=\"event.admin\" style=\"float:right;\" name=\"cog\"></ion-icon>          </ion-item>                 <ion-item *ngIf=\"selectedDate?.events.length==0\">                     <div class=\"no-events-label\">{{noEventsLabel}}</div>                 </ion-item>             </ion-list>         </ng-template>         <ng-template #defaultAllDayEventTemplate let-displayEvent=\"displayEvent\">             <div class=\"calendar-event-inner\">{{displayEvent.event.title}}</div>         </ng-template>         <ng-template #defaultNormalEventTemplate let-displayEvent=\"displayEvent\">             <div class=\"calendar-event-inner\">{{displayEvent.event.title}}</div>         </ng-template>          <div [ngSwitch]=\"calendarMode\" class=\"{{calendarMode}}view-container\">             <monthview *ngSwitchCase=\"'month'\"                 [formatDay]=\"formatDay\"                 [formatDayHeader]=\"formatDayHeader\"                 [formatMonthTitle]=\"formatMonthTitle\"                 [startingDayMonth]=\"startingDayMonth\"                 [showEventDetail]=\"showEventDetail\"                 [noEventsLabel]=\"noEventsLabel\"                 [autoSelect]=\"autoSelect\"                 [eventSource]=\"eventSource\"                 [markDisabled]=\"markDisabled\"                 [monthviewDisplayEventTemplate]=\"monthviewDisplayEventTemplate||monthviewDefaultDisplayEventTemplate\"                 [monthviewInactiveDisplayEventTemplate]=\"monthviewInactiveDisplayEventTemplate||monthviewDefaultDisplayEventTemplate\"                 [monthviewEventDetailTemplate]=\"monthviewEventDetailTemplate||monthviewDefaultEventDetailTemplate\"                 [locale]=\"locale\"                 [dateFormatter]=\"dateFormatter\"                 [dir]=\"dir\"                 [lockSwipeToPrev]=\"lockSwipeToPrev\"                 [lockSwipes]=\"lockSwipes\"                 [spaceBetween]=\"spaceBetween\"                        (onRangeChanged)=\"rangeChanged($event)\"                 (onEventSelected)=\"eventSelected($event)\"                 (onTimeSelected)=\"timeSelected($event)\"                 (onTitleChanged)=\"titleChanged($event)\">             </monthview>             <weekview *ngSwitchCase=\"'week'\"                 [formatWeekTitle]=\"formatWeekTitle\"                 [formatWeekViewDayHeader]=\"formatWeekViewDayHeader\"                 [formatHourColumn]=\"formatHourColumn\"                 [startingDayWeek]=\"startingDayWeek\"                 [allDayLabel]=\"allDayLabel\"                 [hourParts]=\"hourParts\"                 [eventSource]=\"eventSource\"                 [markDisabled]=\"markDisabled\"                 [weekviewAllDayEventTemplate]=\"weekviewAllDayEventTemplate||defaultAllDayEventTemplate\"                 [weekviewNormalEventTemplate]=\"weekviewNormalEventTemplate||defaultNormalEventTemplate\"                 [locale]=\"locale\"                 [dateFormatter]=\"dateFormatter\"                 [dir]=\"dir\"                 [scrollToHour]=\"scrollToHour\"                 [preserveScrollPosition]=\"preserveScrollPosition\"                 [lockSwipeToPrev]=\"lockSwipeToPrev\"                 [lockSwipes]=\"lockSwipes\"                 [startHour]=\"startHour\"                 [endHour]=\"endHour\"                 [spaceBetween]=\"spaceBetween\"                 (onRangeChanged)=\"rangeChanged($event)\"                 (onEventSelected)=\"eventSelected($event)\"                 (onTimeSelected)=\"timeSelected($event)\"                 (onTitleChanged)=\"titleChanged($event)\">             </weekview>             <dayview *ngSwitchCase=\"'day'\"                 [formatDayTitle]=\"formatDayTitle\"                 [formatHourColumn]=\"formatHourColumn\"                 [allDayLabel]=\"allDayLabel\"                 [hourParts]=\"hourParts\"                 [eventSource]=\"eventSource\"                 [markDisabled]=\"markDisabled\"                 [dayviewAllDayEventTemplate]=\"dayviewAllDayEventTemplate||defaultAllDayEventTemplate\"                 [dayviewNormalEventTemplate]=\"dayviewNormalEventTemplate||defaultNormalEventTemplate\"                 [locale]=\"locale\"                 [dateFormatter]=\"dateFormatter\"                 [dir]=\"dir\"                 [scrollToHour]=\"scrollToHour\"                 [preserveScrollPosition]=\"preserveScrollPosition\"                 [lockSwipeToPrev]=\"lockSwipeToPrev\"                 [lockSwipes]=\"lockSwipes\"                 [startHour]=\"startHour\"                 [endHour]=\"endHour\"                 [spaceBetween]=\"spaceBetween\"                 (onRangeChanged)=\"rangeChanged($event)\"                 (onEventSelected)=\"eventSelected($event)\"                 (onTimeSelected)=\"timeSelected($event)\"                 (onTitleChanged)=\"titleChanged($event)\">             </dayview>         </div>`,
-    styles: [`:host > div { height: 100%; }        .event-detail-container {          border-top: 2px darkgrey solid;        }        .no-events-label {          font-weight: bold;          color: darkgrey;          text-align: center;        }        .event-detail {          cursor: pointer;          white-space: nowrap;          text-overflow: ellipsis;        }        .monthview-eventdetail-timecolumn {          width: 110px;          overflow: hidden;        }        .calendar-event-inner {          overflow: hidden;          background-color: #3a87ad;          color: white;          height: 100%;          width: 100%;          padding: 2px;          line-height: 15px;        }        @media (max-width: 750px) {          .calendar-event-inner {            font-size: 12px;          }        }`],
+    template: `<ng-template #monthviewDefaultDisplayEventTemplate let-view=\"view\" let-row=\"row\" let-col=\"col\">             {{view.dates[row*7+col].label}}         </ng-template>
+    <ng-template #monthviewDefaultEventDetailTemplate let-showEventDetail=\"showEventDetail\" let-selectedDate=\"selectedDate\" let-noEventsLabel=\"noEventsLabel\">
+       <ion-list class=\"event-detail-container\" has-bouncing=\"false\" *ngIf=\"showEventDetail\" overflow-scroll=\"false\">
+       <div class="container">
+          <ul> 
+            <ion-item-group>
+            
+            <ion-item *ngFor=\"let event of selectedDate?.events\" tappable  (click)=\"eventSelected(event)\">          
+                <li>
+                <span></span>
+                <div>
+                    <div class="title">{{event.title}}</div>
+                </div> 
+                <span class="number">
+                    <span>{{event.startTime|date: 'HH:mm'}} </span>
+                    <span></span>
+                </span>
+                </li>
+            </ion-item>        
+            <ion-item *ngIf=\"selectedDate?.events.length==0\">
+                <div class=\"no-events-label\">{{noEventsLabel}}</div>
+            </ion-item>
+            </ion-item-group>
+        </ul>
+        </div>
+       </ion-list>
+    </ng-template>
+    <ng-template #defaultAllDayEventTemplate let-displayEvent=\"displayEvent\">
+       <div class=\"calendar-event-inner\">{{displayEvent.event.title}}</div>
+    </ng-template>
+    <ng-template #defaultNormalEventTemplate let-displayEvent=\"displayEvent\">
+       <div class=\"calendar-event-inner\">{{displayEvent.event.title}}</div>
+    </ng-template>
+    <div [ngSwitch]=\"calendarMode\" class=\"{{calendarMode}}view-container\">             <monthview *ngSwitchCase=\"'month'\"                 [formatDay]=\"formatDay\"                 [formatDayHeader]=\"formatDayHeader\"                 [formatMonthTitle]=\"formatMonthTitle\"                 [startingDayMonth]=\"startingDayMonth\"                 [showEventDetail]=\"showEventDetail\"                 [noEventsLabel]=\"noEventsLabel\"                 [autoSelect]=\"autoSelect\"                 [eventSource]=\"eventSource\"                 [markDisabled]=\"markDisabled\"                 [monthviewDisplayEventTemplate]=\"monthviewDisplayEventTemplate||monthviewDefaultDisplayEventTemplate\"                 [monthviewInactiveDisplayEventTemplate]=\"monthviewInactiveDisplayEventTemplate||monthviewDefaultDisplayEventTemplate\"                 [monthviewEventDetailTemplate]=\"monthviewEventDetailTemplate||monthviewDefaultEventDetailTemplate\"                 [locale]=\"locale\"                 [dateFormatter]=\"dateFormatter\"                 [dir]=\"dir\"                 [lockSwipeToPrev]=\"lockSwipeToPrev\"                 [lockSwipes]=\"lockSwipes\"                 [spaceBetween]=\"spaceBetween\"                        (onRangeChanged)=\"rangeChanged($event)\"                 (onEventSelected)=\"eventSelected($event)\"                 (onTimeSelected)=\"timeSelected($event)\"                 (onTitleChanged)=\"titleChanged($event)\">             </monthview>             <weekview *ngSwitchCase=\"'week'\"                 [formatWeekTitle]=\"formatWeekTitle\"                 [formatWeekViewDayHeader]=\"formatWeekViewDayHeader\"                 [formatHourColumn]=\"formatHourColumn\"                 [startingDayWeek]=\"startingDayWeek\"                 [allDayLabel]=\"allDayLabel\"                 [hourParts]=\"hourParts\"                 [eventSource]=\"eventSource\"                 [markDisabled]=\"markDisabled\"                 [weekviewAllDayEventTemplate]=\"weekviewAllDayEventTemplate||defaultAllDayEventTemplate\"                 [weekviewNormalEventTemplate]=\"weekviewNormalEventTemplate||defaultNormalEventTemplate\"                 [locale]=\"locale\"                 [dateFormatter]=\"dateFormatter\"                 [dir]=\"dir\"                 [scrollToHour]=\"scrollToHour\"                 [preserveScrollPosition]=\"preserveScrollPosition\"                 [lockSwipeToPrev]=\"lockSwipeToPrev\"                 [lockSwipes]=\"lockSwipes\"                 [startHour]=\"startHour\"                 [endHour]=\"endHour\"                 [spaceBetween]=\"spaceBetween\"                 (onRangeChanged)=\"rangeChanged($event)\"                 (onEventSelected)=\"eventSelected($event)\"                 (onTimeSelected)=\"timeSelected($event)\"                 (onTitleChanged)=\"titleChanged($event)\">             </weekview>             <dayview *ngSwitchCase=\"'day'\"                 [formatDayTitle]=\"formatDayTitle\"                 [formatHourColumn]=\"formatHourColumn\"                 [allDayLabel]=\"allDayLabel\"                 [hourParts]=\"hourParts\"                 [eventSource]=\"eventSource\"                 [markDisabled]=\"markDisabled\"                 [dayviewAllDayEventTemplate]=\"dayviewAllDayEventTemplate||defaultAllDayEventTemplate\"                 [dayviewNormalEventTemplate]=\"dayviewNormalEventTemplate||defaultNormalEventTemplate\"                 [locale]=\"locale\"                 [dateFormatter]=\"dateFormatter\"                 [dir]=\"dir\"                 [scrollToHour]=\"scrollToHour\"                 [preserveScrollPosition]=\"preserveScrollPosition\"                 [lockSwipeToPrev]=\"lockSwipeToPrev\"                 [lockSwipes]=\"lockSwipes\"                 [startHour]=\"startHour\"                 [endHour]=\"endHour\"                 [spaceBetween]=\"spaceBetween\"                 (onRangeChanged)=\"rangeChanged($event)\"                 (onEventSelected)=\"eventSelected($event)\"                 (onTimeSelected)=\"timeSelected($event)\"                 (onTitleChanged)=\"titleChanged($event)\">             </dayview>         </div>`,
+    styles: [`:host > div { height: 100%; }        .event-detail-container {          border-top: 2px darkgrey solid;        }        .no-events-label {          font-weight: bold;          color: darkgrey;          text-align: center;        }        .event-detail {          cursor: pointer;          white-space: nowrap;          text-overflow: ellipsis;        }        .monthview-eventdetail-timecolumn {          width: 110px;          overflow: hidden;        }        .calendar-event-inner {          overflow: hidden;          background-color: #3a87ad;          color: white;          height: 100%;          width: 100%;          padding: 2px;          line-height: 15px;        }        @media (max-width: 750px) {          .calendar-event-inner {            font-size: 12px;          }        }
+    .container ul {
+        margin: 0;
+        padding: 0px;
+        list-style: none;
+        position: relative;
+        color: #fff;
+        font-size: 13px;
+        border: none!important;
+    }
+    .container ul:before {
+        content: "";
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        border-left: 2px dashed #000;
+        margin-left: 36px;
+    }
+    .container ul li {
+        position: relative;
+        margin-left: 30px;
+        background-color: #D42424;
+        padding: 14px;
+        margin-left: 65px;
+        border: none!important;
+    }
+    .container ul li:not(:first-child) {
+        margin-top: 60px;
+    }
+    .container ul li > span {
+        width: 2px;
+        height: 100%;
+        /*background: #000;*/
+        left: -30px;
+        top: 0;
+        position: absolute;
+    }
+    .container ul li > span:before, .container ul li > span:after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: 2px solid #000;
+        position: absolute;
+        background: #D42424;
+        left: -5px;
+        top: 0;
+    }
+    .container ul li span:after {
+        top: 100%;
+    }
+    .container ul li > div {
+        margin-left: 10px;
+    }
+    .container div .title, .container div .type {
+        font-weight: 600;
+        font-size: 12px;
+        color: #fff;
+    }
+    .container div .info {
+        font-weight: 300;
+    }
+    .container div > div {
+        margin-top: 5px;
+    }
+    .container span.number {
+        height: 100%;
+    }
+    .container span.number span {
+        position: absolute;
+        font-size: 10px;
+        left: -35px;
+        font-weight: bold;
+        color: #000;
+    }
+    .container span.number span:first-child {
+        top: 0;
+    }
+    .container span.number span:last-child {
+        top: 100%;     
+    }
+    .item.item-block {
+        background: transparent!important;
+        border: none!important;
+        padding: 0px!important;
+        margin: 0px!important;
+    }
+    .item-inner {
+        border: none!important;
+        background: transparent!important;
+        padding: 0px!important;
+        margin: 0px!important;
+    }
+    .input-wrapper ion-label {
+        border: none!important;
+        padding: 0px!important;
+        margin: 0px!important;
+    }
+    .input-wrapper {
+        border: none!important;
+        background: transparent!important;
+        padding: 0px!important;
+        margin: 0px!important;
+    }`],
     providers: [CalendarService]
 })
 export class CalendarComponent implements OnInit {

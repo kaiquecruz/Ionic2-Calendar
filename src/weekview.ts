@@ -30,7 +30,7 @@ import { IDisplayAllDayEvent, IWeekViewAllDayEventSectionTemplateContext, IWeekV
                                 <tr>
                                     <td *ngFor="let day of views[0].dates" class="calendar-cell">
                                         <ng-template [ngTemplateOutlet]="weekviewAllDayEventSectionTemplate"
-                                                     [ngOutletContext]="{day:day, eventTemplate:weekviewAllDayEventTemplate}">
+                                                     [ngTemplateOutletContext]="{day:day, eventTemplate:weekviewAllDayEventTemplate}">
                                         </ng-template>
                                     </td>
                                 </tr>
@@ -47,7 +47,7 @@ import { IDisplayAllDayEvent, IWeekViewAllDayEventSectionTemplateContext, IWeekV
                                 </td>
                                 <td *ngFor="let tm of row" class="calendar-cell" tappable (click)="select(tm.time, tm.events)">
                                     <ng-template [ngTemplateOutlet]="weekviewNormalEventSectionTemplate"
-                                                 [ngOutletContext]="{tm:tm, eventTemplate:weekviewNormalEventTemplate}">
+                                                 [ngTemplateOutletContext]="{tm:tm, eventTemplate:weekviewNormalEventTemplate}">
                                     </ng-template>
                                 </td>
                             </tr>
@@ -103,7 +103,7 @@ import { IDisplayAllDayEvent, IWeekViewAllDayEventSectionTemplateContext, IWeekV
                                 <tr>
                                     <td *ngFor="let day of views[1].dates" class="calendar-cell">
                                         <ng-template [ngTemplateOutlet]="weekviewAllDayEventSectionTemplate"
-                                                     [ngOutletContext]="{day:day, eventTemplate:weekviewAllDayEventTemplate}">
+                                                     [ngTemplateOutletContext]="{day:day, eventTemplate:weekviewAllDayEventTemplate}">
                                         </ng-template>
                                     </td>
                                 </tr>
@@ -121,7 +121,7 @@ import { IDisplayAllDayEvent, IWeekViewAllDayEventSectionTemplateContext, IWeekV
                                 <td *ngFor="let tm of row" class="calendar-cell" tappable (click)="select(tm.time, tm.events)">
                                     <div [ngClass]="{'calendar-event-wrap': tm.events}" *ngIf="tm.events">
                                         <ng-template [ngTemplateOutlet]="weekviewNormalEventSectionTemplate"
-                                                     [ngOutletContext]="{tm:tm, eventTemplate:weekviewNormalEventTemplate}">
+                                                     [ngTemplateOutletContext]="{tm:tm, eventTemplate:weekviewNormalEventTemplate}">
                                         </ng-template>
                                     </div>
                                 </td>
@@ -178,7 +178,7 @@ import { IDisplayAllDayEvent, IWeekViewAllDayEventSectionTemplateContext, IWeekV
                                 <tr>
                                     <td *ngFor="let day of views[2].dates" class="calendar-cell">
                                         <ng-template [ngTemplateOutlet]="weekviewAllDayEventSectionTemplate"
-                                                     [ngOutletContext]="{day:day, eventTemplate:weekviewAllDayEventTemplate}">
+                                                     [ngTemplateOutletContext]="{day:day, eventTemplate:weekviewAllDayEventTemplate}">
                                         </ng-template>
                                     </td>
                                 </tr>
@@ -196,7 +196,7 @@ import { IDisplayAllDayEvent, IWeekViewAllDayEventSectionTemplateContext, IWeekV
                                 <td *ngFor="let tm of row" class="calendar-cell" tappable (click)="select(tm.time, tm.events)">
                                     <div [ngClass]="{'calendar-event-wrap': tm.events}" *ngIf="tm.events">
                                         <ng-template [ngTemplateOutlet]="weekviewNormalEventSectionTemplate"
-                                                     [ngOutletContext]="{tm:tm, eventTemplate:weekviewNormalEventTemplate}">
+                                                     [ngTemplateOutletContext]="{tm:tm, eventTemplate:weekviewNormalEventTemplate}">
                                         </ng-template>
                                     </div>
                                 </td>
