@@ -149,33 +149,39 @@ export enum Step {
     selector: 'calendar',
     template: `<ng-template #monthviewDefaultDisplayEventTemplate let-view=\"view\" let-row=\"row\" let-col=\"col\">             {{view.dates[row*7+col].label}}         </ng-template>
     <ng-template #monthviewDefaultEventDetailTemplate let-showEventDetail=\"showEventDetail\" let-selectedDate=\"selectedDate\" let-noEventsLabel=\"noEventsLabel\">
-       <ion-list class=\"event-detail-container\" has-bouncing=\"false\" *ngIf=\"showEventDetail\" overflow-scroll=\"false\">
-       <div class=\"container\">
-          <ul> 
-            <ion-item-group>
-            
-            <ion-item *ngFor=\"let event of selectedDate?.events\" tappable  (click)=\"eventSelected(event)\">          
-                <li>
-                <span></span>
-                <div>
-                    <div class=\"title\">{{event.quantidade}}x {{event.title}}</div>
-                    <div>{{event.preco}}</div>
-                </div> 
-                <span class=\"number\">
-                    <span>{{event.periodo}}</span>
-                    <span></span>
-                </span>
-                </li>
+        <ion-list class=\"event-detail-container\" has-bouncing=\"false\" *ngIf=\"showEventDetail\" overflow-scroll=\"false\">
+            <div class=\"container\">
+                <ion-item-group>
 
-                <button ion-button color=\"completelight\" item-end>Cancelar</button>
-            </ion-item>        
-            <ion-item *ngIf=\"selectedDate?.events.length==0\">
-                <div class=\"no-events-label\">{{noEventsLabel}}</div>
-            </ion-item>
-            </ion-item-group>
-        </ul>
-        </div>
-       </ion-list>
+                    <ion-item *ngIf=\"selectedDate?.events.length>0\">
+                        <ion-label><b>Cancelar</b></ion-label>
+                        <ion-toggle mode=\"ios\" checked=\"false\"></ion-toggle>
+                    </ion-item>
+
+                    <ion-item no-lines *ngFor=\"let event of selectedDate?.events\">          
+                        <ion-label text-wrap>
+                            {{event.qdt}}x {{event.title}} 
+                        </ion-label>  
+                        <ion-note item-end>{{event.valor_item | currency: 'R$ '}}</ion-note>  
+                    </ion-item>
+
+                    <div class=\"section-div\" *ngIf=\"selectedDate?.events.length>0\">
+                        <p class=\"section-title\">Endereço de Entrega</p>
+
+                        <ion-item no-lines text-wrap>
+                            <ion-label>
+                            <h2>Casa</h2>
+                            <p><b>Endereço:</b> rua dsdhskdsd, Batista campos, Belém - PA, Nº 23</p>
+                            </ion-label>
+                        </ion-item>
+                    </div>
+
+                    <ion-item *ngIf=\"selectedDate?.events.length==0\">
+                        <div class=\"no-events-label\">{{noEventsLabel}}</div>
+                    </ion-item>
+                </ion-item-group>
+            </div>
+        </ion-list>
     </ng-template>
     <ng-template #defaultAllDayEventTemplate let-displayEvent=\"displayEvent\">
        <div class=\"calendar-event-inner\">{{displayEvent.event.title}}</div>
