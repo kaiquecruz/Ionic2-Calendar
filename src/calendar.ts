@@ -150,7 +150,7 @@ export enum Step {
     template: `<ng-template #monthviewDefaultDisplayEventTemplate let-view=\"view\" let-row=\"row\" let-col=\"col\">             {{view.dates[row*7+col].label}}         </ng-template>
     <ng-template #monthviewDefaultEventDetailTemplate let-showEventDetail=\"showEventDetail\" let-selectedDate=\"selectedDate\" let-noEventsLabel=\"noEventsLabel\">
        <ion-list class=\"event-detail-container\" has-bouncing=\"false\" *ngIf=\"showEventDetail\" overflow-scroll=\"false\">
-       <div class="container">
+       <div class=\"container\">
           <ul> 
             <ion-item-group>
             
@@ -158,13 +158,16 @@ export enum Step {
                 <li>
                 <span></span>
                 <div>
-                    <div class="title">{{event.title}}</div>
+                    <div class=\"title\">{{event.quantidade}}x {{event.title}}</div>
+                    <div>{{event.preco}}</div>
                 </div> 
-                <span class="number">
-                    <span>{{event.startTime|date: 'HH:mm'}} </span>
+                <span class=\"number\">
+                    <span>{{event.periodo}}</span>
                     <span></span>
                 </span>
                 </li>
+
+                <button ion-button color=\"completelight\" item-end>Cancelar</button>
             </ion-item>        
             <ion-item *ngIf=\"selectedDate?.events.length==0\">
                 <div class=\"no-events-label\">{{noEventsLabel}}</div>
@@ -201,12 +204,7 @@ export enum Step {
     }
     .container ul li {
         position: relative;
-        margin-left: 30px;
-        background-color: #FF619C;
-        padding: 14px;
         margin-left: 65px;
-        border: none!important;
-        border-radius: 10px!important;
     }
     .container ul li:not(:first-child) {
         margin-top: 60px;
@@ -214,7 +212,6 @@ export enum Step {
     .container ul li > span {
         width: 2px;
         height: 100%;
-        /*background: #000;*/
         left: -30px;
         top: 0;
         position: absolute;
@@ -226,7 +223,7 @@ export enum Step {
         border-radius: 50%;
         border: 2px solid #000;
         position: absolute;
-        background: #FF619C;
+        background: #400440;
         left: -5px;
         top: 0;
     }
@@ -238,8 +235,6 @@ export enum Step {
     }
     .container div .title, .container div .type {
         font-weight: 600;
-        font-size: 12px;
-        color: #fff;
     }
     .container div .info {
         font-weight: 300;
