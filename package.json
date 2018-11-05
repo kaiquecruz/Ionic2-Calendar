@@ -1,6 +1,6 @@
 {
     "name": "kaiquecruz-ionic2-calendar-clickacai",
-    "version": "1.0.9",
+    "version": "1.1.0",
     "description": "Ionic2 calendar component",
     "keywords": [
         "Ionic2",
@@ -15,11 +15,12 @@
         "url": "git+https://github.com/twinssbc/Ionic2-Calendar.git"
     },
     "scripts": {
-        "build": "rm -rf dist && tsc && cp package.json dist/package.json",
+        "build": "rm -rf dist && tsc",
         "build-prod": "rm -rf aot && node_modules/.bin/ngc -p tsconfig-aot.json && node_modules/.bin/ngc src && mv src/*ngfactory.ts aot && rm -r aot/waste && rm -r src/*.ngsummary.json",
         "copy_static_files": "cp -r package.json README.md LICENSE tsconfig.json typings.json typings dist/",
-        "copy_static_files_prod": "cp -r package.json README.md LICENSE tsconfig.json aot/",
-        "dev": "tsc --watch"
+        "copy_static_files_prod": "cp -r package.json README.md LICENSE tsconfig.json typings.json typings aot/",
+        "dev": "tsc --watch",
+        "postinstall": "typings install"
     },
     "main": "./index.js",
     "dependencies": {},
